@@ -1,7 +1,7 @@
 $(document).ready(() => {
     let productId = (new URLSearchParams(window.location.search)).get('productId');
     
-    fetch("http://diwserver.vps.webdock.cloud:8765/products/" + productId)
+    fetch("https://diwserver.vps.webdock.cloud/products/" + productId)
         .then(res=>res.json())
         .then(product => {
             

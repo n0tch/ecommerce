@@ -2,8 +2,7 @@ $(document).ready( ()=>{
     let searchText = (new URLSearchParams(window.location.search)).get('search');
     $("#search-title").append("Busca de produtos \"" + searchText + "\"");
 
-    console.log("http://diwserver.vps.webdock.cloud:8765/products/search?query=" + searchText);
-    fetch("http://diwserver.vps.webdock.cloud:8765/products/search?query=" + searchText)
+    fetch("https://diwserver.vps.webdock.cloud/products/search?query=" + searchText)
         .then(res=>res.json())
         .then(json => {
             if($.isEmptyObject(json)){

@@ -1,4 +1,4 @@
-const baseURL = "http://diwserver.vps.webdock.cloud:8765/"
+const baseURL = "https://diwserver.vps.webdock.cloud/"
 var currentUrl = baseURL + 'products'
 var currentPage = 1
 
