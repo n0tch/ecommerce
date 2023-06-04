@@ -1,3 +1,5 @@
+import { buildRating } from './rating.js';
+
 $(document).ready( ()=>{
     let searchText = (new URLSearchParams(window.location.search)).get('search');
     $("#search-title").append("Busca de produtos \"" + searchText + "\"");
@@ -10,9 +12,8 @@ $(document).ready( ()=>{
                 return;
             }
             $.each(json, (_, data) => {
-                
                 $('#products').append(
-                    `<div class="col-sm-2 col-md-4 col-1">${buildCardProduct(data)}</div>`
+                    `<div class="col-lg-4 col-md-6 col-sm-6 col-12">${buildCardProduct(data)}</div>`
                 );
             });
         })
@@ -26,6 +27,7 @@ function buildCardProduct(product){
         <div class="card-body">
             <h5 class="card-title product-title">${product.title}</h5>
             <a href="#"><span class="badge text-bg-secondary">${product.category}</span></a>
+            <p>${buildRating(product.rating)}</p>
             <p class="card-text">${product.description}</p>
             <p class="card-text">R$ ${product.price}</p>
             <a href="${url}" class="btn btn-primary product-detail">Detail</a>

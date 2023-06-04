@@ -1,3 +1,5 @@
+import { buildRating } from './rating.js';
+
 const baseURL = "https://diwserver.vps.webdock.cloud/"
 var currentUrl = baseURL + 'products'
 var currentPage = 1
@@ -16,7 +18,7 @@ async function fetchProducts(url){
         $("#products").empty();
         $.each(json.products, (_, data) => {
             $('#products').append(
-                `<div class="col-lg-4 col-md-6 col-12">${buildCardProduct(data)}</div>`
+                `<div class="col-lg-4 col-md-6 col-sm-6 col-12">${buildCardProduct(data)}</div>`
             );
         });
         $(window).scrollTop(0);
@@ -36,16 +38,23 @@ async function fetchCategories(){
     await fetch(baseURL + 'products/categories')
     .then(res=>res.json())
     .then(json => {
-        $.each(json, (index, category) => {
-            $("#category").append(populateCategories(index, category));
-            $(".category-" + index).click(() => {
-                currentUrl = baseURL + 'products/category/' + json[index];
-                console.log(currentUrl);
-                fetchProducts(currentUrl);
-            })
-        })
+        populateCategories(json);
     })
     removeLoading();
+}
+
+function populateCategories(categories){
+    $.each(categories, (index, category) => {
+        $('#categories-list').append(
+            `<li id="category-${index}" class="list-group-item list-group-item-action list-group-item-light">${category}</li>`
+        );
+        $(`#category-${index}`).click(() => {
+            currentUrl = baseURL + 'products/category/' + category;
+            $(`#categories-list li`).removeClass("list-group-item-dark");
+            $(`#category-${index}`).addClass('list-group-item-dark');
+            fetchProducts(currentUrl);
+        })
+    });
 }
 
 function buildCardProduct(product){
@@ -74,12 +83,6 @@ function buildDisplayCategories(categories){
     return categoryString;
 }
 
-function populateCategories(index, category){
-    let url = baseURL + 'products/categories/' + category;
-    
-    return `<li><a class="dropdown-item category-${index}">${category}</a></li>`
-}
-
 function maxLines(text){
     let maxCharacters = 150;
     if(text.length > maxCharacters){
@@ -89,7 +92,7 @@ function maxLines(text){
     }
 }
 
-function buildRating(rating){
+/* function buildRating(rating){
     let rate = Math.floor(rating.rate)
     let rateString = ""
     for(let i =0; i< 5; i++){
@@ -105,7 +108,7 @@ function buildRating(rating){
     }
     return rateString;
 }
-
+ */
 function addLoading(){
     $('#main-container').append(
         `

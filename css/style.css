@@ -4,8 +4,21 @@
     object-fit: contain;
 }
 
+.product-card {
+  min-height: 700px;
+  max-height: 700px;
+}
+
 .product-description{ 
     max-height: 200px;
+}
+
+#categories-list .active{
+  background-color: aqua;
+}
+
+#categories-list p:hover{
+  background-color: red;
 }
 
 .lds-hourglass {
