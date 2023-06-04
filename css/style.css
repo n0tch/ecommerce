@@ -13,6 +13,11 @@
     max-height: 200px;
 }
 
+.site-name{
+  text-decoration: none;
+  color: white;
+}
+
 #categories-list .active{
   background-color: aqua;
 }
