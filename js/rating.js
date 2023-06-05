@@ -12,5 +12,5 @@ export function buildRating(rating){
         `;
         }
     }
-    return rateString;
+    return rateString + `(${rating.count})`;
 }

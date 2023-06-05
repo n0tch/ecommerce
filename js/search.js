@@ -23,7 +23,7 @@ function buildCardProduct(product){
     let url = `/detail.html?productId=${product.id}`;
     return `
     <div class="card m-2">
-        <img src="${product.image}" class="card-img-top product-image" alt="...">
+        <img src="${product.image}" class="card-img-top product-image mx-auto d-block" alt="...">
         <div class="card-body">
             <h5 class="card-title product-title">${product.title}</h5>
             <a href="#"><span class="badge text-bg-secondary">${product.category}</span></a>

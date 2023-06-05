@@ -67,7 +67,7 @@ function buildCardProduct(product){
             ${buildDisplayCategories(product.displayCategories)}
             <p class="card-text product-description">${maxLines(product.description)}</p>
             <p class="card-text">R$ ${product.price}</p>
-            <p>${buildRating(product.rating)} (${product.rating.count})</p>
+            <p>${buildRating(product.rating)}</p>
             <a href="${url}" class="btn btn-primary product-detail">Detail</a>
         </div>
     </div>`;
