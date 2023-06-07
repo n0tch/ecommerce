@@ -1,4 +1,5 @@
 import { buildRating } from './rating.js';
+import { buildbreadcrumb } from './breadcrumb.js';
 
 $(document).ready(() => {
     let productId = (new URLSearchParams(window.location.search)).get('productId');
@@ -16,5 +17,7 @@ $(document).ready(() => {
             $('#season').append(product.season);
             $('#gender').append(product.gender);
             $('#rating').append(buildRating(product.rating));
+
+            $('#breadcrumb').append(buildbreadcrumb());
         })
 });
